@@ -1,14 +1,15 @@
 <?php
-require('../../dbconnect.php');
-require('../classes/BookImage.php');
-require('../classes/BookAuthor.php');
+require('../../_CONNECT/dbconnect.php');
+require('../functlib.php');
 require('../classes/Book.php');
+require('../classes/BookAuthor.php');
+require('../classes/BookImage.php');
 
 $book = new Book($connection);
+// prewrap($book);
 
-
-$firstname  = 'Michael';
-$lastname   = 'Kolling';
+$firstname  = 'Camille';
+$lastname   = 'McCue';
 
 $data = array(
   'firstname'   =>  $firstname,
@@ -16,4 +17,6 @@ $data = array(
 );
 
 $book->add_author($data);
+// prewrap($book);
+
  ?>
