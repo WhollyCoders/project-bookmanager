@@ -19,8 +19,28 @@ class Book{
     $this->welcome_message();
   }
 
-  public function get_book_author_name($author_ID){
+  public function get_author_name($author_ID){
     return $this->book_author->get_book_author_by_id($author_ID);
+  }
+
+  public function add_author($data){
+    $this->book_author->add_book_author($data);
+  }
+
+  public function insert_book(){
+    $sql = "INSERT INTO `book_authors` (
+      `book_author_ID`,
+      `book_author_firstname`,
+      `book_author_lastname`,
+      `book_author_date_entered`
+    ) VALUES (
+      NULL,
+      'Larry',
+      'Ullman',
+      CURRENT_TIMESTAMP
+    );";
+    $result = mysqli_query($this->connection, $sql);
+    if(!$result){echo('*** Error INSERTING Book ***<br>');}
   }
 
   public function create_books_table(){
@@ -32,7 +52,7 @@ class Book{
        `book_description` TEXT NULL ,
        `book_isbn_10` VARCHAR(20) NULL ,
        `book_isbn_13` VARCHAR(20) NULL ,
-       `book_date_entered` DATETIME NOT NULL ,
+       `book_date_entered` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
        PRIMARY KEY (`book_ID`)
      ) ENGINE = InnoDB;";
     $result = mysqli_query($this->connection, $sql);

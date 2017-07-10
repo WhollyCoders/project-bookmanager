@@ -14,7 +14,7 @@ class BookImage{
     $sql = "CREATE TABLE IF NOT EXISTS `whollycoders`.`book_images` (
        `book_image_ID` INT NOT NULL AUTO_INCREMENT ,
        `book_image_url` VARCHAR(255) NOT NULL ,
-       `book_date_entered` DATETIME NOT NULL ,
+       `book_image_date_entered` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
        PRIMARY KEY (`book_image_ID`)
      ) ENGINE = InnoDB;";
     $result = mysqli_query($this->connection, $sql);
