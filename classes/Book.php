@@ -1,13 +1,13 @@
 <?php
 class Book{
   public $connection;
-  public $ID;
+  public $id;
   public $title; // *** REQUIRED ***
-  public $author_ID;
+  public $author_id;
   public $author;
   public $isbn_10;
   public $isbn_13;
-  public $image_ID;
+  public $image_id;
   public $book_author;
   public $book_image;
 
@@ -19,12 +19,25 @@ class Book{
     $this->welcome_message();
   }
 
-  public function get_author_name($author_ID){
-    return $this->book_author->get_book_author_by_id($author_ID);
+  public function get_author_name($author_id){
+    return $this->book_author->get_book_author_by_id($author_id);
   }
 
   public function add_author($data){
     $this->book_author->add_book_author($data);
+  }
+
+  public function add_book($data){
+    $this->set_book_params($data);
+    $this->insert_book();
+  }
+
+  public function set_book_params($data){
+    $this->title      = $data['title'];
+    $this->author_id  = $data['author_id'];
+    $this->isbn_10    = $data['isbn_10'];
+    $this->isbn_13    = $data['isbn_13'];
+    $this->image_ID   = $data['image_id'];
   }
 
   public function insert_book(){
