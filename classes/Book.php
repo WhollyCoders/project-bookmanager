@@ -24,9 +24,17 @@ class Book{
   }
 
   public function create_books_table(){
-    $sql = "CREATE TABLE IF NOT EXISTS `books`(
-
-    );";
+    $sql = "CREATE TABLE IF NOT EXISTS `whollycoders`.`books` (
+       `book_ID` INT NOT NULL AUTO_INCREMENT ,
+       `book_author_ID` INT NOT NULL ,
+       `book_image_ID` INT NULL ,
+       `book_title` VARCHAR(255) NOT NULL ,
+       `book_description` TEXT NULL ,
+       `book_isbn_10` VARCHAR(20) NULL ,
+       `book_isbn_13` VARCHAR(20) NULL ,
+       `book_date_entered` DATETIME NOT NULL ,
+       PRIMARY KEY (`book_ID`)
+     ) ENGINE = InnoDB;";
     $result = mysqli_query($this->connection, $sql);
     if(!$result){echo('*** ERROR Creating BOOKS Table ***<br>');}
   }
