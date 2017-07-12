@@ -21,9 +21,29 @@ class BookImage{
     if(!$result){echo('*** ERROR Creating BOOKS Table ***<br>');}
   }
 
+  public function set_book_image_params($data){
+    $this->image_url    = $data['image_url'];
+  }
+
+  public function add_book_image(){
+    $sql = "INSERT INTO `book_images` (
+      `book_image_ID`,
+      `book_image_url`,
+      `book_image_date_entered`
+    ) VALUES (
+      NULL,
+      'https://easysemester.com/image/cache/data/0132492660-500x500.jpg',
+      CURRENT_TIMESTAMP
+    );";
+  }
+
   public function welcome_message(){
     echo('Book IMAGE Class Instantiated...<br>');
   }
 }
+
+
+//'https://easysemester.com/image/cache/data/0132492660-500x500.jpg'
+// https://www.paypal.me/wmimedia
 
  ?>
